@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Pengurus | SIROBOT UKM Robotika IR64 POLIJE</title>
+    <link rel="stylesheet" href="css/Dashboard.css">
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <div class="logo">
+                
+            </div>
+        </a>
+        <form action="#" method="get">
+            <label for="cari">Cari</label>
+            <input type="search" id="cari" name="cari" placeholder="Cari berita, modul, atau surat...">
+        </form>
+        <p>[Nama Pengurus]</p>
+    </header>
+
+    <nav aria-label="Menu pengurus">
+        <p><strong>OVERVIEW</strong></p>
+        <ul>
+            <li><a href="dashboard.html" aria-current="page">Dashboard</a></li>
+            <li><a href="kelola-berita.html">Kelola Berita &amp; Prestasi</a></li>
+            <li><a href="kelola-modul.html">Kelola Modul Diklat</a></li>
+            <li><a href="kelola-persuratan.html">Kelola Persuratan</a></li>
+            <li><a href="index.html">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Salam -->
+        <section>
+            <p>DASHBOARD PENGURUSAN</p>
+            <h1>Halo [Nama Pengurus], selamat datang kembali</h1>
+            <p><a href="kelola-berita.html">+ Tambah Berita</a></p>
+        </section>
+
+        <!-- Ringkasan -->
+        <section>
+            <h2>Ringkasan Pengelolaan</h2>
+            <p><small>Data contoh</small></p>
+            <ul>
+                <li>
+                    <h3>Kelola Berita &amp; Prestasi</h3>
+                    <p><strong>[18]</strong> konten terbit</p>
+                    <p>[12] berita &middot; [6] prestasi</p>
+                    <p><a href="kelola-berita.html">+ Tambah</a> | <a href="kelola-berita.html">Buka</a></p>
+                </li>
+                <li>
+                    <h3>Kelola Modul Diklat</h3>
+                    <p><strong>[8]</strong> modul tersedia</p>
+                    <p>[8] berkas PDF</p>
+                    <p><a href="kelola-modul.html">+ Unggah</a> | <a href="kelola-modul.html">Buka</a></p>
+                </li>
+                <li>
+                    <h3>Kelola Persuratan</h3>
+                    <p><strong>[24]</strong> surat bulan ini</p>
+                    <p>[15] masuk &middot; [9] keluar</p>
+                    <p><a href="kelola-persuratan.html">+ Catat</a> | <a href="kelola-persuratan.html">Buka</a></p>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Perlu tindak lanjut -->
+        <section>
+            <h2>Perlu Tindak Lanjut</h2>
+            <ul>
+                <li>[2] berita masih berstatus draft &ndash; <a href="kelola-berita.html">Tinjau</a></li>
+                <li>[1] surat belum memiliki berkas PDF &ndash; <a href="kelola-persuratan.html">Lengkapi</a></li>
+                <li>[1] modul belum memiliki berkas PDF &ndash; <a href="kelola-modul.html">Lengkapi</a></li>
+            </ul>
+        </section>
+
+        <!-- Aktivitas -->
+        <section>
+            <h2>Aktivitas Terbaru</h2>
+            <ol>
+                <li>[Nama] menambah berita &quot;[judul]&quot; &ndash; [2 jam lalu]</li>
+                <li>[Nama] mengunggah modul &quot;[judul]&quot; &ndash; [kemarin]</li>
+                <li>[Nama] mencatat surat [No. 003/..] &ndash; [kemarin]</li>
+            </ol>
+        </section>
+    </main>
+
+    <footer>
+        <p><small>&copy; 2026 UKM Robotika IR64 POLIJE</small></p>
+    </footer>
+</body>
+</html>

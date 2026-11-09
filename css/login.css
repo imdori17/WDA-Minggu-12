@@ -1,0 +1,245 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Roboto:wght@400;500&display=swap");
+
+:root {
+  --red: #FF3B3B;
+  --red-dark: #E02B2B;
+  --ink: #111318;
+  --muted: #8B9099;
+  --line: #E9ECF0;
+  --font-head: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Roboto", "Segoe UI", system-ui, sans-serif;
+  --form-width: min(302px, calc(100% - 48px));
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { height: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: minmax(320px, 46%) 1fr;
+  grid-template-rows: 1fr auto 1fr;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+.logo {
+    width: 120px;
+    height: 60px;
+    background-image: url('../assets/images/LogoSirobot.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+/* <main> dilepas supaya <img>, <header>, <section>, <footer> bisa ditata di satu grid */
+main { display: contents; }
+
+/* ===== Panel maskot (kiri) ===== */
+main > img {
+  grid-column: 1;
+  grid-row: 1 / 4;
+  width: 100%;
+  height: 100%;
+  min-height: calc(100vh - 20px);
+  object-fit: cover;
+  object-position: left bottom;
+  background: var(--red);
+  color: #fff;               /* warna teks alt bila gambar belum ada */
+  border-radius: 16px;
+}
+
+/* ===== Kolom kanan: lebar konten sama ===== */
+header,
+main > section,
+footer {
+  grid-column: 2;
+  width: var(--form-width);
+  justify-self: center;
+}
+
+/* ===== Header ===== */
+header {
+  grid-row: 1;
+  align-self: end;
+  margin-bottom: 40px;
+}
+header p { margin: 0 0 22px; }
+header p a {
+  font-size: 11px;
+  color: var(--muted);
+  text-decoration: none;
+}
+header p a:hover { color: var(--red); }
+
+header > a {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 19px;
+  letter-spacing: .02em;
+  color: var(--red);
+  text-decoration: none;
+}
+header > a strong { font-weight: inherit; }
+
+/* ===== Section ===== */
+main > section { grid-row: 2; }
+
+main > section > p:first-of-type {          /* SELAMAT DATANG */
+  margin: 0 0 4px;
+  font-size: 10px;
+  letter-spacing: .04em;
+  color: var(--muted);
+}
+main > section > h1 {
+  margin: 0 0 4px;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 1.2;
+}
+main > section > p:nth-of-type(2) {         /* deskripsi */
+  margin: 0 0 22px;
+  font-size: 9.5px;
+  color: var(--muted);
+}
+
+/* ===== Form ===== */
+form p {
+  position: relative;
+  margin: 0 0 28px;
+}
+form p:last-of-type { margin-bottom: 0; }   /* paragraf tombol */
+form br { display: none; }
+
+form label {
+  position: absolute;
+  z-index: 1;
+  top: -7px;
+  left: 12px;
+  padding: 0 4px;
+  font-size: 10.5px;
+  line-height: 1;
+  color: var(--muted);
+  background: #fff;
+  pointer-events: none;
+  transition: color .15s;
+}
+form p:focus-within label { color: var(--red); }
+
+form input {
+  display: block;
+  width: 100%;
+  height: 40px;
+  padding: 0 14px;
+  font: 400 13px var(--font-body);
+  color: var(--ink);
+  background: #fff;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  outline: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+form input::placeholder { color: #B6BAC2; }
+form input:hover { border-color: #D6DAE0; }
+form input:focus {
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(255, 59, 59, .14);
+}
+
+/* status error (class ditambah oleh JS) */
+form p.has-error input { border-color: var(--red); }
+form p.has-error label { color: var(--red); }
+
+.field-error {
+  position: absolute;
+  top: 100%;
+  left: 4px;
+  margin-top: 3px;
+  font-size: 10.5px;
+  color: var(--red-dark);
+}
+.form-error {
+  margin: -6px 0 14px !important;
+  font-size: 11.5px;
+  color: var(--red-dark);
+}
+.form-error:empty { display: none; }
+
+/* ===== Tombol ===== */
+form button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 36px;
+  margin-top: 4px;
+  font: 500 11.5px var(--font-body);
+  color: #fff;
+  background: var(--red);
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background .15s, transform .1s;
+}
+form button::after { content: "→"; margin-left: 6px; }
+form button:hover { background: var(--red-dark); }
+form button:active { transform: translateY(1px); }
+form button:focus-visible { outline: 3px solid rgba(255, 59, 59, .35); outline-offset: 2px; }
+
+form button.is-loading {
+  color: transparent;
+  pointer-events: none;
+  background: var(--red-dark);
+}
+form button.is-loading::after {
+  content: "";
+  position: absolute;
+  margin: 0;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, .45);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* catatan kecil di bawah form */
+main > section > p:last-of-type {
+  margin: 18px 0 0;
+  font-size: 10px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+/* ===== Footer ===== */
+footer {
+  grid-row: 3;
+  align-self: end;
+  padding-bottom: 12px;
+}
+footer p { margin: 0; font-size: 10px; color: var(--muted); }
+
+/* ===== Responsif ===== */
+@media (max-width: 820px) {
+  body {
+    padding: 0;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+  }
+  main > img { display: none; }
+  header, main > section, footer { grid-column: 1; }
+  header { align-self: start; padding-top: 32px; margin-bottom: 32px; }
+  main > section { align-self: start; }
+  footer { margin-top: 32px; padding-bottom: 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation-duration: .01ms !important; }
+}

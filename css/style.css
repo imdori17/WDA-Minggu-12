@@ -1,0 +1,243 @@
+:root {
+    --red: #e53935;
+    --red-soft: #fdecec;
+    --text: #1f2430;
+    --gray: #f3f3f5;
+    --bg: #eef1f6;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    background: var(--bg);
+    min-height: 100vh;
+    color: var(--text);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ===== Hero ===== */
+.hero {
+  padding: 150px 0 50px;
+  background: linear-gradient(#eef0f6, var(--latar));
+}
+
+.hero-inner {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.hero-text {
+  width: 52%;
+  padding-bottom: 24px;
+}
+
+.eyebrow {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--merah);
+}
+
+.hero h1 {
+  font-size: 34px;
+  line-height: 1.2;
+}
+
+.hero h2 {
+  max-width: 330px;
+  margin-bottom: 24px;
+  font-size: 26px;
+  line-height: 1.25;
+}
+/* ===== Navbar ===== */
+.navbar {
+    position: sticky;
+    top: 16px;
+    z-index: 99999;
+    max-width: 1100px;
+    margin: 16px auto 0;
+    padding: 12px 20px;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 6px 20px rgba(20, 30, 60, .12);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+.nav-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+.nav {
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.logo {
+    width: 120px;
+    height: 60px;
+    background-image: url('../assets/images/LogoSirobot.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+}
+
+.menu a {
+    display: block;
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: background .2s, color .2s;
+}
+
+.menu a:hover {
+    background: var(--gray);
+}
+
+.menu a.active {
+    background: var(--red-soft);
+    color: var(--red);
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 10px;
+    border: 0;
+    cursor: pointer;
+    font-family: inherit;
+    transition: filter .2s;
+}
+
+.btn:hover {
+    filter: brightness(.95);
+}
+
+.btn-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: var(--gray);
+    color: var(--red);
+    min-width: 120px;
+}
+
+.btn-join {
+    background: var(--red);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Tombol hamburger (disembunyikan di desktop) */
+.toggle {
+    display: none;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    padding: 6px;
+}
+
+.toggle span {
+    display: block;
+    width: 24px;
+    height: 3px;
+    margin: 5px 0;
+    background: var(--text);
+    border-radius: 2px;
+    transition: transform .25s, opacity .25s;
+}
+
+.toggle.open span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.toggle.open span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+.logo img {
+    width: 120px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+    .navbar {
+        flex-wrap: wrap;
+        margin: 12px;
+        top: 12px;
+    }
+
+    .toggle {
+        display: block;
+    }
+
+    .menu,
+    .actions {
+        display: none;
+        width: 100%;
+    }
+
+    .menu {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        padding-top: 8px;
+    }
+
+    .actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .navbar.show .menu,
+    .navbar.show .actions {
+        display: flex;
+    }
+}

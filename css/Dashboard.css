@@ -1,0 +1,426 @@
+/* Font untuk judul */
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&display=swap");
+
+/* Warna dikumpulkan di sini supaya mudah dibuat tema gelap */
+:root {
+  --bg: white;
+  --kartu: white;
+  --teks: #111;
+  --abu: #777;
+  --garis: #e5e5e5;
+  --hover: #f1f1f3;
+  --merah: #ff3b3b;
+}
+
+body.gelap {
+  --bg: #16181c;
+  --kartu: #1f2227;
+  --teks: #f0f0f0;
+  --abu: #9aa0a8;
+  --garis: #33373d;
+  --hover: #2a2d33;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: var(--teks);
+  background-color: var(--bg);
+}
+
+/* ===== Header (atas) ===== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 0 15px;
+  background-color: var(--kartu);
+  border-bottom: 1px solid var(--garis);
+}
+
+header > a {
+  margin-right: 20px;
+  font-family: "Plus Jakarta Sans", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--merah);
+  text-decoration: none;
+}
+
+header > a strong {
+  font-weight: 800;
+}
+
+/* Tombol buka/tutup menu (dibuat oleh JavaScript) */
+.tombol-menu {
+  width: 32px;
+  height: 32px;
+  font-size: 16px;
+  color: var(--teks);
+  background-color: transparent;
+  border: 1px solid var(--garis);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+header form {
+  flex: 1;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Label "Cari" disembunyikan dari tampilan, tapi tetap ada untuk pembaca layar */
+header label {
+  position: absolute;
+  left: -9999px;
+}
+
+header input {
+  width: 100%;
+  height: 36px;
+  padding: 0 14px;
+  font-size: 13px;
+  color: var(--teks);
+  background-color: var(--kartu);
+  border: 1px solid var(--garis);
+  border-radius: 10px;
+  outline: none;
+}
+
+header input:focus {
+  border-color: var(--merah);
+}
+
+header p {
+  margin: 0;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* ===== Menu samping ===== */
+nav {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  bottom: 0;
+  z-index: 5;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 12px 12px;
+  background-color: var(--kartu);
+  border-right: 1px solid var(--garis);
+  overflow-y: auto;
+}
+
+/* Hiasan langit di atas menu */
+nav::before {
+  content: "";
+  display: block;
+  height: 100px;
+  margin: 0 -12px 15px;
+  background: linear-gradient(#6ec1ff, #e6f6ff);
+}
+
+nav p {
+  margin: 0 0 8px 10px;
+  font-size: 10px;
+  color: var(--abu);
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+  margin-bottom: 4px;
+}
+
+nav a {
+  display: block;
+  padding: 9px 10px;
+  font-size: 13px;
+  color: var(--teks);
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+nav a:hover {
+  background-color: var(--hover);
+}
+
+/* Menu yang sedang dibuka */
+nav a[aria-current="page"] {
+  font-weight: bold;
+  color: var(--merah);
+  background-color: var(--hover);
+}
+
+/* Logout dipisah dari menu lain */
+nav li:last-child {
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid var(--garis);
+}
+
+nav li:last-child a {
+  color: var(--abu);
+}
+
+.logo{
+    width: 120px;
+    height: 60px;
+    background-image: url('../assets/images/LogoSirobot.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Pengatur tema (dibuat oleh JavaScript) */
+.tema {
+  margin-top: auto;
+  padding-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  border-top: 1px solid var(--garis);
+}
+
+.tema button {
+  padding: 5px 12px;
+  font-size: 12px;
+  color: var(--teks);
+  background-color: transparent;
+  border: 1px solid var(--garis);
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* ===== Isi halaman ===== */
+main {
+  margin-left: 220px;
+  padding: 70px 20px 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* Banner dan ringkasan memenuhi lebar penuh */
+main section:nth-of-type(1),
+main section:nth-of-type(2) {
+  grid-column: 1 / 3;
+}
+
+footer {
+  margin-left: 220px;
+  padding: 15px 20px;
+}
+
+footer p {
+  margin: 0;
+  font-size: 11px;
+  color: var(--abu);
+}
+
+/* Saat menu ditutup */
+body.sidebar-tutup nav {
+  display: none;
+}
+
+body.sidebar-tutup main,
+body.sidebar-tutup footer {
+  margin-left: 0;
+}
+
+/* ===== Banner salam ===== */
+main section:nth-of-type(1) {
+  padding: 25px;
+  color: white;
+  background-color: var(--merah);
+  border-radius: 12px;
+}
+
+main section:nth-of-type(1) p {
+  margin: 0;
+  font-size: 11px;
+}
+
+main section:nth-of-type(1) h1 {
+  max-width: 380px;
+  margin: 8px 0 15px;
+  font-family: "Plus Jakarta Sans", Arial, sans-serif;
+  font-size: 22px;
+}
+
+main section:nth-of-type(1) a {
+  display: inline-block;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  background-color: black;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+/* ===== Ringkasan (3 kartu) ===== */
+main section:nth-of-type(2) {
+  position: relative;
+}
+
+main h2 {
+  margin: 0 0 12px;
+  font-family: "Plus Jakarta Sans", Arial, sans-serif;
+  font-size: 15px;
+}
+
+/* tulisan "Data contoh" di pojok kanan */
+main section:nth-of-type(2) > p {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  color: var(--abu);
+}
+
+main section:nth-of-type(2) ul {
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+main section:nth-of-type(2) li {
+  flex: 1;
+  padding: 18px;
+  background-color: var(--kartu);
+  border: 1px solid var(--garis);
+  border-radius: 12px;
+}
+
+main section:nth-of-type(2) h3 {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: normal;
+  color: var(--abu);
+}
+
+main section:nth-of-type(2) li p {
+  margin: 0 0 6px;
+  font-size: 12px;
+  color: var(--abu);
+}
+
+main section:nth-of-type(2) li strong {
+  margin-right: 6px;
+  font-family: "Plus Jakarta Sans", Arial, sans-serif;
+  font-size: 32px;
+  color: var(--teks);
+}
+
+/* Paragraf tombol: teks " | " disembunyikan, tinggal dua tombol */
+main section:nth-of-type(2) li p:last-child {
+  margin-top: 12px;
+  font-size: 0;
+}
+
+main section:nth-of-type(2) li p:last-child a {
+  display: inline-block;
+  margin-right: 8px;
+  padding: 7px 14px;
+  font-size: 12px;
+  color: var(--teks);
+  text-decoration: none;
+  border: 1px solid var(--garis);
+  border-radius: 8px;
+}
+
+main section:nth-of-type(2) li p:last-child a:first-child {
+  color: white;
+  background-color: var(--merah);
+  border-color: var(--merah);
+}
+
+/* ===== Perlu tindak lanjut & Aktivitas ===== */
+main section:nth-of-type(3),
+main section:nth-of-type(4) {
+  padding: 20px;
+  background-color: var(--kartu);
+  border: 1px solid var(--garis);
+  border-radius: 12px;
+}
+
+main section:nth-of-type(3) ul,
+main section:nth-of-type(4) ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+main section:nth-of-type(3) li,
+main section:nth-of-type(4) li {
+  padding: 12px 0;
+  font-size: 13px;
+  border-top: 1px solid var(--garis);
+}
+
+/* titik merah sebelum teks */
+main section:nth-of-type(3) li::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 10px;
+  background-color: var(--merah);
+  border-radius: 50%;
+}
+
+main section:nth-of-type(3) li a {
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--merah);
+  text-decoration: none;
+}
+
+main section:nth-of-type(3) li a::after {
+  content: " →";
+}
+
+/* ===== Tampilan HP / layar kecil ===== */
+@media (max-width: 800px) {
+  main,
+  footer {
+    margin-left: 0;
+  }
+
+  main {
+    grid-template-columns: 1fr;
+  }
+
+  main section:nth-of-type(1),
+  main section:nth-of-type(2) {
+    grid-column: auto;
+  }
+
+  main section:nth-of-type(2) ul {
+    flex-direction: column;
+  }
+
+  header p {
+    display: none;
+  }
+}
